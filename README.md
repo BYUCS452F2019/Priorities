@@ -15,31 +15,31 @@ Once the user adds tasks and priority levels, the tasks will show up in the user
 The dashboard will display tasks due that day, and will also display tasks due on future dates.
 The future tasks displayed are based on priority level, and the user can choose how far in advance to show tasks based on priority level.
 
-# SQL
+## SQL
 
 I was wanting to use MySQL, but am open to ideas.
 I am thinking that we will need 3-4 database tables; mainly right now I think: users, priorities, and tasks will be tables.
 
-# NoSQL
+## NoSQL
 
 I was thinking about using firebase or mongoDB as the NoSQL database but am open to ideas.
 
-# Languages
+## Languages
 I'm fine building the app with a python, php, or java Back-end and doing either a web-app or mobile app.
 The Front-end can either be android, iOS, or reactnative if we decide for a mobile app.
 Or the front-end can be angular, vue, or reactjs for a webapp. 
 
-# Legal
+## Legal
 
 This will be a Utah LLC
 
-# Business
+## Business
 
 Can be used on two-tiers:
   * free personal use
   * charged team use 
 
-# Technical
+## Technical
 
 We will focus on:
   1. Picking a front-end, back-end, and choosing an SQL database
