@@ -2,7 +2,7 @@ Priorities
 ======
 Create personal, prioritized to-do lists
 
-# Project Description
+## Project Description
 
 The Goal of Priorities is to make daily to-do lists based on user inputted criteria.
 
