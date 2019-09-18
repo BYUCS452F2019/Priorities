@@ -15,6 +15,10 @@ Once the user adds tasks and priority levels, the tasks will show up in the user
 The dashboard will display tasks due that day, and will also display tasks due on future dates.
 The future tasks displayed are based on priority level, and the user can choose how far in advance to show tasks based on priority level.
 
+## TEAM
+
+I am thinking I will need 1-2 more people on the project
+
 ## SQL
 
 I was wanting to use MySQL, but am open to ideas.
