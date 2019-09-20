@@ -1,0 +1,5 @@
+This sounds like a great project and I have thought about doing something like this for my own personal use. I like the proposed database
+choices. The legal part makes sense. 
+
+I would be good for this project because I have worked in many tech stacks and have a lot of experience with both SQL databases 
+(Oracle and Postgres) and No-SQL (DynamoDB). Most of my experience is with back end development, but I am always up for a challenge.
