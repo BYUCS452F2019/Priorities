@@ -1,0 +1,24 @@
+User (UserID, UserEmail, UserName)
+
+  - the User table references users of the application, and is therefore named User
+  - The User table doesn't reference other tables but both other tables reference User, has a User has both tasks and priorities 
+
+Task (TaskID, UserID, PriorityID, TaskDueDate, TaskTitle, TaskCreationDate, TaskDescription, TaskCompleted)
+  Foreign Key: UserID references User
+  Foreign Key: PriorityID references Priority
+
+  - The Task table represents the actual tasks in the User's to-do list.
+  - Each task references a user, the User that has that task, and a priority, how important that task is
+  - The DueDate, Title, CreationDate, Description, and Completed columns are attributes attached to the task entity which are fairly self-explanatory.
+
+Priority (PriorityID, UserID, PriorityTitle, PriorityType, PriorityNumber)
+  Foreign Key: UserID references User
+
+  - The Priority table represents priorites that users have created.
+  - Each user can create several priorities, these priorites are then assigned to Tasks.
+  - Each priority is given a priorityID and userID to identyify it.
+  - The priority is given a PriorityTitle that the User uses to identify it.
+  - Each priority has a Type, that is Day, Week, Month, or Year. This refers to how far in advance the user will be notified of the task
+  - Each priority has a number, which is how many of it's type the user will be notified for before the Task due date.
+  - An example of type and month is the following: A priority with type 'Week' and Number 2, will be on a user's to-do list for two weeks before the due date of the task.
+
