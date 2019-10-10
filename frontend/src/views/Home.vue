@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1>Welcome to Priorities</h1>
-    <p>{{msg}}</p>
-    <p>{{getBackendURL()}}</p>
+    <p v-if="loggedIn">Please <a href="/#/login">login</a></p>
+    <p v-else>Please <a href="/#/register">Regsiter</a></p>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
   name: 'home',
   data: function () {
     return {
-      msg: ''
+      msg: '',
+      loggedIn: false,
       }
   },
   created: function () {

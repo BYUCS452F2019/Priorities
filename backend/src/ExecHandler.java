@@ -23,6 +23,7 @@ public class ExecHandler implements HttpHandler {
 
         try {
             exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
             exchange.sendResponseHeaders(HTTP_OK, 0);
             StreamProcessor.writeString("You should see this in the response of the network call", exchange.getResponseBody());
             exchange.close();

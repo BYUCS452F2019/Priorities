@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 Vue.mixin({
   methods: {
-    getBackendURL: function () {
+    api: function () {
       return json.backend
     }
   }
