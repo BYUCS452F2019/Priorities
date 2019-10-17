@@ -1,4 +1,4 @@
-package backend.src;
+package com.springbok.priorities;
 
 import com.sun.net.httpserver.HttpServer;
 import java.io.File;

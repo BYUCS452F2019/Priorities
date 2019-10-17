@@ -1,4 +1,4 @@
-package backend.src;
+package com.springbok.priorities;
 
 import java.io.IOException;
 import java.io.InputStream;

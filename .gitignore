@@ -1,2 +1,2 @@
 config.*
-backend/src/*.class
+backend/target
