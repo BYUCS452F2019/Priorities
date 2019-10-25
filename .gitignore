@@ -4,3 +4,4 @@ backend/.settings
 backend/.classpath
 backend/.project
 backend/bin
+.vscode

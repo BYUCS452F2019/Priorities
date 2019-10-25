@@ -1,5 +1,6 @@
 package com.springbok.priorities.dao;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +8,14 @@ import com.springbok.priorities.models.UserModel;
 
 public class UserDao {
     public static String create(UserModel model) {
-
-        return "authorization";
+        try {
+            Connection conn = DaoManager.getConnection();
+            Statement stmt = conn.createStatement();
+            DaoManager.closeConnection(conn);
+            return "authorization";
+        } catch (Exception sQLException) {
+            return "bad connection";
+        }
     }
 
     public static String read(UserModel model) {

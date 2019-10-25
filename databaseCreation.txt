@@ -2,26 +2,26 @@ CREATE SCHEMA `priorities` ;
 
 CREATE TABLE `priorities`.`user` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
-  `user_email` CHAR(100) NOT NULL,
-  `user_name` CHAR(100) NOT NULL,
-  `user_name` CHAR(100) NOT NULL,
+  `email` CHAR(100) NOT NULL,
+  `username` CHAR(100) NOT NULL,
+  `password` CHAR(100) NOT NULL,
   PRIMARY KEY (`user_id`));
 
 CREATE TABLE `priorities`.`task` (
   `task_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `priority_id` INT NOT NULL,
-  `task_due_date` DATETIME NOT NULL,
-  `task_title` CHAR(255) NOT NULL,
-  `task_creation_date` DATETIME NOT NULL,
-  `task_description` LONGTEXT NULL,
-  `task_completed` TINYINT NOT NULL,
+  `due_date` DATETIME NOT NULL,
+  `title` CHAR(255) NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `description` LONGTEXT NULL,
+  `completed` TINYINT NOT NULL,
   PRIMARY KEY (`task_id`));
 
 CREATE TABLE `priority` (
   `priority_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `priority_title` CHAR(255) NOT NULL,
-  `priority_type` CHAR(45) NOT NULL,
-  `priority_number` int(11) NOT NULL,
+  `title` CHAR(255) NOT NULL,
+  `type` CHAR(45) NOT NULL,
+  `number` int(11) NOT NULL,
   PRIMARY KEY (`priority_id`));
