@@ -22,4 +22,23 @@ public class DaoManager {
       }
       return false;
     }
+
+
+  public static String createObject(String sql) throws SQLException {
+    String id = "";
+    Connection conn = DaoManager.getConnection();
+    Statement stmt = conn.createStatement();
+    stmt.execute(sql);
+    ResultSet resultSet = stmt.getGeneratedKeys();
+    if (resultSet.next()) {
+        id = resultSet.getString(0);
+    }
+
+    DaoManager.closeConnection(conn);
+    return id;
+  }
+
+  public static Object getObject(String sql) throws SQLException {
+    return null;
+  }
 }

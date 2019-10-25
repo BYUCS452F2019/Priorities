@@ -2,7 +2,7 @@ package com.springbok.priorities.models;
 
 import java.sql.Date;
 
-public class TaskModel {
+public class TaskModel extends Object {
     public String id;
     public String userID;
     public String priorityID;
