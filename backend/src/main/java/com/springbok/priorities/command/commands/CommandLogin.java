@@ -17,6 +17,6 @@ public class CommandLogin implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(UserDao.read(new UserModel(this.username, this.password)), "no error");
+        return new CommandResult(UserDao.read(this.username, this.password), "no error");
     }
 }

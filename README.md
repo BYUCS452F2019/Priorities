@@ -51,3 +51,8 @@ We will focus on:
   3. Building an MVP
 
 Zack Mortensen.
+
+To run backend:
+ - install jdk
+ - install maven
+ - run "mvn exec:java" from the backend directory
