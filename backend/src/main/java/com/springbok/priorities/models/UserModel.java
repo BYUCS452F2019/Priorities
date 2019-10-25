@@ -1,6 +1,7 @@
 package com.springbok.priorities.models;
 
 public class UserModel {
+    public String userID;
     public String username;
     public String email;
     public String password;
