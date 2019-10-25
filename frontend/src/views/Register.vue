@@ -48,7 +48,7 @@ export default {
       await this.$http.post(this.api(), requestInfo).then( function (response) {
         // this.$store.user_id = response.data.user_id
         console.log(response)
-        vm.$router.push({ name: 'Tasks' })
+        // vm.$router.push({ name: 'Tasks' })
       }).catch( function (error) {
         console.log(error)
       })
