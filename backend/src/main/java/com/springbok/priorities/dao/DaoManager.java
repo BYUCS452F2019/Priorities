@@ -11,6 +11,7 @@ public class DaoManager {
     String password = "root";
 
     conn = DriverManager.getConnection(url, user, password);
+    conn.setAutoCommit(false);
     return conn;
   }
 
