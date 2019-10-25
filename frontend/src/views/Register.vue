@@ -44,7 +44,6 @@ export default {
         }
       }
       let vm = this
-      console.log(vm)
       await this.$http.post(this.api(), requestInfo).then( function (response) {
         // this.$store.user_id = response.data.user_id
         console.log(response)
