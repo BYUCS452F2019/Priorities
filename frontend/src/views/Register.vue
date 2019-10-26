@@ -38,7 +38,7 @@ export default {
       let requestInfo = {
         type: 'register',
         data: {
-          name: this.name,
+          username: this.name,
           password: this.password,
           email: this.email
         }
