@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navigation></Navigation>
     <div class="card" style="width: 60rem;" v-for="item in tasks" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
@@ -31,8 +32,12 @@
 </template>
 
 <script>
+import Navigation from '../components/Nav.vue'
 export default {
   name: 'Tasks',
+  components: {
+    'Navigation': Navigation
+  },
   data: function () {
     return {
       tasks: [
@@ -63,7 +68,7 @@ export default {
   },
   methods: {
     toggleForm: function () {
-      this.showForm = !this.showForm
+      this.showForm = true
     }
   }
 }
