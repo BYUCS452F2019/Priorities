@@ -1,12 +1,21 @@
 package com.springbok.priorities.authorization;
 
+import com.springbok.priorities.dao.UserDao;
+
 public class Authorizer {
   
   public static String getAuthorizationCode(String username, String password) {
-    return "Authorized";
+    String authCode = "";
+    if (UserDao.getUserIDByUserNameAndPassword(username, password) != null) {
+      authCode = "IamAuthorized";
+    }
+    return authCode;
   }
 
   public static boolean checkAuthorization(String authCode) {
-    return true;
+    if (authCode.equals("IamAuthorized")) {
+      return true;
+    }
+    return false;
   }
 }

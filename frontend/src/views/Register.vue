@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <Navigation></Navigation>
   <form>
     <div class="form-group">
       <label for="emailAddress">Email Address</label>
@@ -15,11 +17,16 @@
     <button type="submit" class="btn btn-primary" @click.stop.prevent="Register()">Submit</button>
     <span>{{msg}}</span>
   </form>
+  </div>
 </template>
 
 <script>
+import Navigation from '../components/Nav.vue'
 export default {
   name: 'Register',
+  components: {
+    'Navigation': Navigation
+  },
   data: function() {
     return {
       email: '',
@@ -38,17 +45,17 @@ export default {
       let requestInfo = {
         type: 'register',
         data: {
-          name: this.name,
+          username: this.name,
           password: this.password,
           email: this.email
         }
       }
       let vm = this
-      await this.$http.post(this.api(), requestInfo).then( function (response) {
+      await this.$http.post(this.api(), requestInfo).then(function (response) {
         // this.$store.user_id = response.data.user_id
         console.log(response)
         // vm.$router.push({ name: 'Tasks' })
-      }).catch( function (error) {
+      }).catch(function (error) {
         console.log(error)
       })
     }

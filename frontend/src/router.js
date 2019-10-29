@@ -31,9 +31,9 @@ export default new Router({
       component: Tasks
     },
     {
-      path: '/Priorities',
+      path: '/priorities',
       name: 'Priorities',
       component: Priorities
-    },
+    }
   ]
 })

@@ -4,7 +4,6 @@ import java.util.Map;
 
 import com.springbok.priorities.command.*;
 import com.springbok.priorities.dao.UserDao;
-import com.springbok.priorities.models.UserModel;
 
 public class CommandLogin implements CommandInterface {
     private String username;
@@ -20,5 +19,4 @@ public class CommandLogin implements CommandInterface {
         return new CommandResult(UserDao.getUserIDByUserNameAndPassword(this.username, this.password), "no error");
     }
 
-    
 }

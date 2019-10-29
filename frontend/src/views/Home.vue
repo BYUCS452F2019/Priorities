@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Navigation></Navigation>
     <h1>Welcome to Priorities</h1>
     <p v-if="loggedIn">Please <a href="/#/login">login</a></p>
     <p v-else>Please <a href="/#/register">Register</a></p>
@@ -8,8 +9,12 @@
 </template>
 
 <script>
+import Navigation from '../components/Nav.vue'
 export default {
   name: 'home',
+  components: {
+    'Navigation': Navigation
+  },
   data: function () {
     return {
       msg: '',

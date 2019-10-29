@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <Navigation></Navigation>
   <form>
     <div class="form-group">
       <label for="emailAddress">Email Address</label>
@@ -11,9 +13,11 @@
     <button type="submit" class="btn btn-primary" @click.stop.prevent="Login()">Submit</button>
     <span>{{msg}}</span>
   </form>
+  </div>
 </template>
 
 <script>
+import Navigation from '../components/Nav.vue'
 export default {
   name: 'Login',
   props: {
@@ -21,6 +25,9 @@ export default {
       type: Boolean,
       required: true
     }
+  },
+  components: {
+    'Navigation': Navigation
   },
   data: function() {
     return {

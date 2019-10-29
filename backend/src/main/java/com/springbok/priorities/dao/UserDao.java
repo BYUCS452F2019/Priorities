@@ -12,17 +12,19 @@ public class UserDao {
         String toReturn = "";
         try {
             Connection conn = DaoManager.getConnection();
-            String sql = "INSERT INTO user (username, email, password ) VALUES (" 
-                + model.username + ", " 
-                + model.email + ", " 
-                + model.password + ")";
+            String sql = "INSERT INTO user (username, email, password ) VALUES ('" 
+                + model.username + "', '" 
+                + model.email + "', '" 
+                + model.password + "')";
             Statement stmt = conn.createStatement();
-            stmt.execute(sql);
+            stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet resultSet = stmt.getGeneratedKeys();
 
             while (resultSet.next()) {
-                toReturn = resultSet.getString(0);
+                toReturn = Integer.toString(resultSet.getInt(1));
             }
+
+            conn.commit();
 
             DaoManager.closeConnection(conn);
 
