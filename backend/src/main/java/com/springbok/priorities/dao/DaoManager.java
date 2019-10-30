@@ -120,4 +120,14 @@ public class DaoManager {
     DaoManager.closeConnection(conn);
     return id;
   }
+
+  public static Boolean updateObject(String sql) throws SQLException {
+    Boolean result = false;
+    Connection conn = DaoManager.getConnection();
+    Statement stmt = conn.createStatement();
+    result = stmt.execute(sql);
+    conn.commit();
+    DaoManager.closeConnection(conn);
+    return result;
+  }
 }

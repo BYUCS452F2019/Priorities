@@ -6,7 +6,7 @@ public class Authorizer {
   
   public static String getAuthorizationCode(String username, String password) {
     String authCode = "";
-    if (UserDao.getUserIDByUserNameAndPassword(username, password) != null) {
+    if (UserDao.getUserID(username, password) != null) {
       authCode = "IamAuthorized";
     }
     return authCode;

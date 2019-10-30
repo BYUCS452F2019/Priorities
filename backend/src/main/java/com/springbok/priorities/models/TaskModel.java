@@ -3,57 +3,53 @@ package com.springbok.priorities.models;
 import java.sql.Date;
 
 public class TaskModel {
-    @DBTable(columnName = "id")
-    public Integer id;
-    @DBTable(columnName = "userID")
-    public Integer userID;
-    @DBTable(columnName = "priorityID")
-    public Integer priorityID;
+    @DBTable(columnName = "task_id")
+    public Integer task_id;
+    @DBTable(columnName = "user_id")
+    public Integer user_id;
+    @DBTable(columnName = "priority_id")
+    public Integer priority_id;
+    @DBTable(columnName = "due_date")
+    public String due_date;
     @DBTable(columnName = "title")
     public String title;
+    @DBTable(columnName = "creation_date")
+    public Boolean creation_date;
     @DBTable(columnName = "description")
-    public String description;
+    public Date description;
     @DBTable(columnName = "completed")
-    public Boolean completed;
-    @DBTable(columnName = "creationDate")
-    public Date creationDate;
-    @DBTable(columnName = "dueDate")
-    public Date dueDate;
+    public Date completed;
 
-
-    public TaskModel(Integer id, Integer userID, Integer priorityID, String title, String description, Boolean completed, Date creationDate, Date dueDate) {
-        this.id = id;
-        this.userID = userID;
-        this.priorityID = priorityID;
-        this.title = title;
-        this. description = description;
-        this.completed = completed;
-        this. creationDate = creationDate;
-        this.dueDate = dueDate;
+    public Integer getTask_id() {
+        return task_id;
     }
 
-    public Integer getId() {
-        return id;
+    public void setTask_id(Integer task_id) {
+        this.task_id = task_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public Integer getPriority_id() {
+        return priority_id;
     }
 
-    public Integer getPriorityID() {
-        return priorityID;
+    public void setPriority_id(Integer priority_id) {
+        this.priority_id = priority_id;
     }
 
-    public void setPriorityID(Integer priorityID) {
-        this.priorityID = priorityID;
+    public String getDue_date() {
+        return due_date;
+    }
+
+    public void setDue_date(String due_date) {
+        this.due_date = due_date;
     }
 
     public String getTitle() {
@@ -64,37 +60,41 @@ public class TaskModel {
         this.title = title;
     }
 
-    public String getDescription() {
+    public Boolean getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Boolean creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public Date getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Date description) {
         this.description = description;
     }
 
-    public Boolean getCompleted() {
+    public Date getCompleted() {
         return completed;
     }
 
-    public void setCompleted(Boolean completed) {
+    public void setCompleted(Date completed) {
         this.completed = completed;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, String due_date, String title,
+            Boolean creation_date, Date description, Date completed) {
+        this.task_id = task_id;
+        this.user_id = user_id;
+        this.priority_id = priority_id;
+        this.due_date = due_date;
+        this.title = title;
+        this.creation_date = creation_date;
+        this.description = description;
+        this.completed = completed;
     }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-
+    
     
 }
