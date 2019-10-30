@@ -11,22 +11,11 @@ public class UserDao {
     public static String create(UserModel model) {
         String toReturn = "";
         try {
-            Connection conn = DaoManager.getConnection();
             String sql = "INSERT INTO user (username, email, password ) VALUES ('" 
                 + model.username + "', '" 
                 + model.email + "', '" 
                 + model.password + "')";
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-            ResultSet resultSet = stmt.getGeneratedKeys();
-
-            while (resultSet.next()) {
-                toReturn = Integer.toString(resultSet.getInt(1));
-            }
-
-            conn.commit();
-
-            DaoManager.closeConnection(conn);
+            toReturn = DaoManager.createObject(sql);
 
             return toReturn;
         } catch (SQLException sqlE) {
@@ -35,18 +24,11 @@ public class UserDao {
         }
     }
 
-    public static String getUserIDByUserNameAndPassword(String user_name, String password) {
+    public static String getUserID(String user_name, String password) {
         String user_id = null;
         try {
-            Connection conn = DaoManager.getConnection();
             String sql = "SELECT user_id FROM user WHERE user_name = " + user_name + " and password = " + password;
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
-            while (result.next()) {
-                user_id = result.getString(0);
-            }
-            DaoManager.closeConnection(conn);
-
+            user_id = DaoManager.getObjectID(sql);
             return user_id;
         } catch (SQLException sqlE) {
             sqlE.printStackTrace();
@@ -55,20 +37,11 @@ public class UserDao {
     }
 
     public static UserModel read(String user_id) {
-        UserModel userModel = null;
         try {
-            Connection conn = DaoManager.getConnection();
             String sql = "SELECT * FROM user WHERE user_id = " + user_id;
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
-            while (result.next()) {
-                userModel = new UserModel(result.getString(0), result.getString(1), result.getString(2), result.getString(3));
-            }
-            DaoManager.closeConnection(conn);
-
-            return userModel;
-        } catch (SQLException sqlE) {
-            sqlE.printStackTrace();
+            return DaoManager.getObject(UserModel.class, sql);
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

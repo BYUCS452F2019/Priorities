@@ -1,6 +1,6 @@
 package com.springbok.priorities.dao;
 
-import java.sql.*;
+import java.util.List;
 
 import com.springbok.priorities.models.TaskModel;
 
@@ -23,11 +23,11 @@ public class TaskDao {
         }
     }
 
-    public static TaskModel getTasksForUserID(String userID) {
-        String sql = "SELECT * FROM Tasks WHERE user_id = " + userID;
+    public static List<TaskModel> getTasksForUserID(String userID) {
+        String sql = "SELECT * FROM task WHERE user_id = " + userID;
         try {
-            return (TaskModel)DaoManager.getObject(sql);
-        } catch (SQLException exception) {
+            return DaoManager.getObjects(TaskModel.class, sql);
+        } catch (Exception exception) {
             exception.printStackTrace();
             return null;
         }
