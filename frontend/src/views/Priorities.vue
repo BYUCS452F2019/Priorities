@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navigation></Navigation>
-    <div class="card" style="width: 60rem;" v-for="item in priorities" v-bind:key="item.id">
+    <div class="card" style="width: 60rem;" v-for="item in $store.state.priorities" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
         <p class="card-text">Priority: {{ item.number }} {{ item.type }}(s)</p>
@@ -22,8 +22,8 @@
         </div>
         <div class="col">
           <select v-model="selected" style="width: 7rem;">
-            <option v-for="option in timePeriods" v-bind:value="option" v-bind:key="option">
-              {{ option }}
+            <option v-for="option in timePeriods" v-bind:value="option.value" v-bind:key="option">
+              {{ option.label }}
             </option>
           </select>
         </div>
@@ -38,44 +38,30 @@
 import Navigation from '../components/Nav.vue'
 export default {
   name: 'Priorities',
+  data: function() {
+    return {
+      showForm: false,
+      priorityName: "",
+      priorityNumber: "",
+      selected: "",
+      timePeriods: [
+        {
+          value: 0,
+          label: "Hours"
+        },
+        {
+          value: 1,
+          label: "Days"
+        },
+        {
+          value: 2,
+          label: "Weeks"
+        }
+      ]
+    }
+  },
   components: {
     'Navigation': Navigation
-  },
-  data: function () {
-    return {
-      priorities: [
-        {
-          id: 1,
-          name: 'High',
-          type: 'Day',
-          number: '2'
-        },
-        {
-          id: 2,
-          name: 'Medium',
-          type: 'Week',
-          number: '1'
-        },
-        {
-          id: 3,
-          name: 'Low',
-          type: 'Week',
-          number: '2'
-        }
-      ],
-      timePeriods: [
-        'Hour(s)',
-        'Day(s)',
-        'Week(s)',
-        'Month(s)',
-        'Year(s)'
-      ],
-      showForm: false,
-      selected: '',
-      priorityName: '',
-      priorityNumber: '',
-      msg: ''
-    }
   },
   methods: {
     toggleForm: function () {
@@ -98,6 +84,19 @@ export default {
         console.log(e)
       })
     }
+  },
+  created: function() {
+    let payload = {
+      type: "getPriorities",
+      data: {
+        user_id: this.$store.state.user_id
+      }
+    }
+    this.$http.post(this.api(), payload).then(r => {
+      vm.$store.commit('updateField', {priorities: r.data.response})
+    }).catch(e => {
+      console.log(e)
+    })
   }
 }
 </script>

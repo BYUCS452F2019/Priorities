@@ -11,7 +11,7 @@ public class TaskDao {
                         + task.priority_id + ", '" 
                         + task.title + "', '" 
                         + task.description + "', " 
-                        + task.completed + ", "
+                        + 0 + ", "
                         + task.creation_date + ", " 
                         + task.due_date;
                         
