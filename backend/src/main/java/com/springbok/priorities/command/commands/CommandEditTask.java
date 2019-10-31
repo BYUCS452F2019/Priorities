@@ -17,7 +17,7 @@ public class CommandEditTask implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(Boolean.toString(TaskDao.updateTask(task)), "no error");
+        return new CommandResult(TaskDao.updateTask(task), "no error");
     }
 
 }

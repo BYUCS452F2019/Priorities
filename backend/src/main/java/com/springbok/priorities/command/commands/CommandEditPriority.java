@@ -17,7 +17,7 @@ public class CommandEditPriority implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(Boolean.toString(PriorityDao.updatePriority(priority)), "no error");
+        return new CommandResult(PriorityDao.updatePriority(priority), "no error");
     }
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import com.springbok.priorities.models.TaskModel;
 
 public class TaskDao {
-    public static String create(TaskModel task) {
+    public static Integer create(TaskModel task) {
         String sql = "INSERT into task (user_id, priority_id, title, descrition, completed, creation_date, due_date) VALUES ("
                         + task.user_id + ", " 
                         + task.priority_id + ", " 

@@ -18,7 +18,7 @@ CREATE TABLE `priorities`.`task` (
   `completed` TINYINT NOT NULL,
   PRIMARY KEY (`task_id`));
 
-CREATE TABLE `priority` (
+CREATE TABLE `priorities`.`priority` (
   `priority_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `title` CHAR(255) NOT NULL,

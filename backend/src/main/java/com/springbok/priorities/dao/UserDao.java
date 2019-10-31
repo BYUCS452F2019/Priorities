@@ -5,22 +5,19 @@ import java.sql.SQLException;
 import com.springbok.priorities.models.UserModel;
 
 public class UserDao {
-    public static String create(UserModel model) {
-        String toReturn = "";
+    public static Integer create(UserModel model) {
         try {
             String sql = "INSERT INTO user (username, email, password ) VALUES ('" + model.username + "', '"
                     + model.email + "', '" + model.password + "')";
-            toReturn = DaoManager.createObject(sql);
-
-            return toReturn;
+            return DaoManager.createObject(sql);
         } catch (SQLException sqlE) {
             sqlE.printStackTrace();
-            return toReturn;
+            return null;
         }
     }
 
-    public static String getUserID(String user_name, String password) {
-        String user_id = null;
+    public static Integer getUserID(String user_name, String password) {
+        Integer user_id = null;
         try {
             String sql = "SELECT user_id FROM user WHERE user_name = " + user_name + " and password = " + password;
             user_id = DaoManager.getObjectID(sql);

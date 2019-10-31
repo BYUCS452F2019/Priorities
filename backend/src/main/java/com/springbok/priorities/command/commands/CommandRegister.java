@@ -22,7 +22,6 @@ public class CommandRegister implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        String result = UserDao.create(new UserModel(this.username, this.email, this.password));
-        return new CommandResult(result, "no error ever");
+        return new CommandResult(UserDao.create(new UserModel(this.username, this.email, this.password)), "no error ever");
     }
 }
