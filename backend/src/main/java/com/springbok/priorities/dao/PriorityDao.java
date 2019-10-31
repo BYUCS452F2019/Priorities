@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.springbok.priorities.models.PriorityModel;;
 
-public class PrioritiesDao {
+public class PriorityDao {
     public static String create(PriorityModel priority) {
         String sql = "INSERT into priority (user_id, title, type, number) VALUES ("
          + priority.user_id
