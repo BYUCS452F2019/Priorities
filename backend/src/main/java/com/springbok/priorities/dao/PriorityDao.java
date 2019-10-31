@@ -7,12 +7,12 @@ import com.springbok.priorities.models.PriorityModel;;
 public class PriorityDao {
     public static Integer create(PriorityModel priority) {
         String sql = "INSERT into priority (user_id, title, type, number) VALUES ("
-         + priority.user_id
-         + priority.title
-         + priority.type
+         + priority.user_id + ", '"
+         + priority.title + "', '"
+         + priority.type + "', "
          + priority.number
          + ")";
-                        
+        System.out.println(sql); 
         try {
             return DaoManager.createObject(sql);
         } catch (Exception exception) {

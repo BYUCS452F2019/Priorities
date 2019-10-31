@@ -52,7 +52,7 @@ export default {
       }
       let vm = this
       await this.$http.post(this.api(), requestInfo).then(function (response) {
-        this.$store.user_id = response.data.response
+        vm.$store.commit('updateField', {user_id: response.data.response})
         console.log(response)
         // vm.$router.push({ name: 'Tasks' })
       }).catch(function (error) {

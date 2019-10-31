@@ -53,7 +53,7 @@ export default {
       }
       let vm = this
       await axios.post(this.api(), requestInfo).then( function (response) {
-        this.$store.user_id = response.data.user_id
+        vm.$store.commit('updateField', {user_id: response.data.response})
         vm.router.push({ name: 'Home' })
       }).catch( function (error) {
         console.log(error)

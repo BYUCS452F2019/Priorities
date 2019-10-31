@@ -11,14 +11,14 @@
     <form v-if="showForm">
       <div class="form-group">
         <label for="priorityName">Priority Name</label>
-        <input type="text" class="form-control" id="priorityName" placeholder="Priority name">
+        <input v-model="priorityName" type="text" class="form-control" id="priorityName" placeholder="Priority name">
       </div>
       <div>
         <label for="priorityNumber">Due Date</label>
       </div>
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" id="priorityNumber" placeholder="1, 2, 3...">
+          <input v-model="priorityNumber" type="text" class="form-control" id="priorityNumber" placeholder="1, 2, 3...">
         </div>
         <div class="col">
           <select v-model="selected" style="width: 7rem;">
@@ -28,7 +28,7 @@
           </select>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary my-3">Create Priority</button>
+      <button type="submit" class="btn btn-primary my-3" @click.stop.prevent="submitPriority">Create Priority</button>
       <span>{{msg}}</span>
     </form>
   </div>
@@ -70,12 +70,33 @@ export default {
         'Month(s)',
         'Year(s)'
       ],
-      showForm: false
+      showForm: false,
+      selected: '',
+      priorityName: '',
+      priorityNumber: '',
+      msg: ''
     }
   },
   methods: {
     toggleForm: function () {
       this.showForm = true
+    },
+    submitPriority() {
+      let payload = {
+        type: "addPriority", 
+        data: {
+          user_id: this.$store.state.user_id,
+          title: this.priorityName,
+          type: this.selected,
+          number: this.priorityNumber
+        }
+      }
+      console.log(payload)
+      this.$http.post(this.api(), payload).then(r => {
+        console.log(r)
+      }).catch(e => {
+        console.log(e)
+      })
     }
   }
 }

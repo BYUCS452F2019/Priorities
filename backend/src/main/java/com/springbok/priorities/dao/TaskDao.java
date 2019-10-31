@@ -8,9 +8,9 @@ public class TaskDao {
     public static Integer create(TaskModel task) {
         String sql = "INSERT into task (user_id, priority_id, title, descrition, completed, creation_date, due_date) VALUES ("
                         + task.user_id + ", " 
-                        + task.priority_id + ", " 
-                        + task.title + ", " 
-                        + task.description + ", " 
+                        + task.priority_id + ", '" 
+                        + task.title + "', '" 
+                        + task.description + "', " 
                         + task.completed + ", "
                         + task.creation_date + ", " 
                         + task.due_date;
