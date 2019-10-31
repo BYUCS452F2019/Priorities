@@ -21,7 +21,7 @@ public class PriorityDao {
         }
     }
 
-    public static List<PriorityModel> getTasksForUserID(String userID) {
+    public static List<PriorityModel> getPrioritiesForUserID(String userID) {
         String sql = "SELECT * FROM priority WHERE user_id = " + userID;
         try {
             return DaoManager.getObjects(PriorityModel.class, sql);
