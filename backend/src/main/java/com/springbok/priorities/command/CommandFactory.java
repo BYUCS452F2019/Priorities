@@ -6,7 +6,7 @@ import com.springbok.priorities.command.commands.*;
 
 public class CommandFactory {
     
-    public static CommandInterface getCommand(String type, String commandData) {
+    public static CommandInterface getCommand(String type, Map<String, Object> commandData) {
         if (type.equals("login")) {
             return new CommandLogin(commandData);
         } else if (type.equals("register")) {

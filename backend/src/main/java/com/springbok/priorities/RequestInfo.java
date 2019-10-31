@@ -1,6 +1,8 @@
 package com.springbok.priorities;
 
+import java.util.HashMap;
+
 public class RequestInfo {
     public String type;
-    public String data;
+    public HashMap<String, Object> data;
 }

@@ -30,18 +30,18 @@ public class DaoManager {
   }
 
   public static String createObject(String sql) throws SQLException {
-    String id = "";
+    Integer id = -1;
     Connection conn = DaoManager.getConnection();
     Statement stmt = conn.createStatement();
     stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
     ResultSet resultSet = stmt.getGeneratedKeys();
     if (resultSet.next()) {
-      id = resultSet.getString(0);
+      id = resultSet.getInt(1);
     }
     conn.commit();
 
     DaoManager.closeConnection(conn);
-    return id;
+    return Integer.toString(id);
   }
 
   public static <T> T getObject(Class<T> type, String sql) throws Exception {
