@@ -101,12 +101,14 @@ export default {
           due_date: this.date,
           createdDate: Date.now(),
           completed: 0,
-          start_remind_date: computeStartRemindDate(this.date, this.priority)
+          start_remind_date: this.computeStartRemindDate(this.date, this.priority)
         }
       }
+      let vm = this
       console.log(payload)
       this.$http.post(this.api(), payload).then(r => {
         console.log(r)
+        vm.$store.commit('addToTasks', {task_id: r.data.response, taskPayload: payload})
       }).catch(e => {
         console.log(e)
       })
