@@ -94,12 +94,13 @@ public class TaskModel {
         this.completed = completed;
     }
 
-    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, Date due_date, String title,
+    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, Date due_date, Date start_remind_date, String title,
             Date creation_date, String description, Boolean completed) {
         this.task_id = task_id;
         this.user_id = user_id;
         this.priority_id = priority_id;
         this.due_date = due_date;
+        this.start_remind_date = start_remind_date;
         this.title = title;
         this.creation_date = creation_date;
         this.description = description;
