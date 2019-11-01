@@ -4,6 +4,7 @@
     <div class="card" style="width: 60rem;" v-for="item in tasks" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
+        <p>Due date: {{ item.due }}</p>
         <p class="card-text">Priority: {{ item.priority }}</p>
         <p class="card-text">Description: {{item.description }}</p>
       </div>
@@ -12,16 +13,20 @@
     <form v-if="showForm">
       <div class="form-group">
         <label for="taskName">Task Name</label>
-        <input type="text" class="form-control" id="taskName" placeholder="Task Name" v-model="email">
+        <input type="text" class="form-control" id="taskName" placeholder="Task Name" v-model="name">
       </div>
       <div class="form-group">
         <label for="taskDescription">Task Description</label>
-        <input type="text" class="form-control" id="taskDescription" placeholder="Task Description" v-model="password">
+        <input type="text" class="form-control" id="taskDescription" placeholder="Task Description" v-model="description">
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="date" class="form-control" id="dueDate" v-model="date">
       </div>
       <div>
-        <select v-model="selected">
-          <option v-for="option in priorities" v-bind:value="option" v-bind:key="option">
-            {{ option }}
+        <select v-model="priority">
+          <option v-for="option in $store.state.priorities" v-bind:value="option.priority_id" v-bind:key="option">
+            {{ option.title }}
           </option>
         </select>
       </div>
@@ -45,30 +50,54 @@ export default {
           id: 1,
           name: 'Shopping',
           description: 'Shopping List: ...',
-          priority: 'High'
+          priority: 'High',
+          due: 'Nov 3, 2019'
         },
         {
           id: 2,
           name: 'Homework',
           description: 'Assignment: ...',
-          priority: 'medium'
+          priority: 'medium',
+          due: 'Nov 4, 2019'
         },
         {
           id: 3,
           name: 'Date Night',
           description: 'Schedule: ...',
-          priority: 'low'
+          priority: 'low',
+          due: 'Nov 5, 2019'
         }
       ],
-      priorities: [
-        'low', 'medium', 'high'
-      ],
+      priority: '',
+      name: '',
+      description: '',
+      date: '',
       showForm: false
     }
   },
   methods: {
     toggleForm: function () {
       this.showForm = true
+    },
+    submitTask() {
+      let payload = {
+        type: "addTask",
+        data: {
+          user_id: this.$store.state.user_id,
+          priority_id: this.priority,
+          title: this.name,
+          description: this.description,
+          due_date: this.date,
+          createdDate: Date.now(),
+          completed: 0
+        }
+      }
+      console.log(payload)
+      this.$http.post(this.api(), payload).then(r => {
+        console.log(r)
+      }).catch(e => {
+        console.log(e)
+      })
     }
   }
 }
