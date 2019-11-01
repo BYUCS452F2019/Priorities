@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navigation></Navigation>
-    <div class="card" style="width: 60rem;" v-for="item in tasks" v-bind:key="item.id">
+    <div class="card" style="width: 60rem;" v-for="item in $store.state.tasks" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
         <p>Due date: {{ item.due }}</p>
@@ -25,12 +25,12 @@
       </div>
       <div>
         <select v-model="priority">
-          <option v-for="option in $store.state.priorities" v-bind:value="option.priority_id" v-bind:key="option">
+          <option v-for="option in $store.state.priorities" v-bind:value="option" v-bind:key="option">
             {{ option.title }}
           </option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary my-3">Create task</button>
+      <button type="submit" class="btn btn-primary my-3" @click.stop.prevent="submitTask">Create task</button>
       <span>{{msg}}</span>
     </form>
   </div>
@@ -79,22 +79,47 @@ export default {
     toggleForm: function () {
       this.showForm = true
     },
-    submitTask() {
+    computeStartRemindDate (dueDate, priority) {
+      let timeToSub = 0
+      if (priority.type === 1) {
+        timeToSub = priority.time
+      } else {
+        timeToSub = priority.time * 7
+      }
+      let date = new Date()
+      date.setDate(dueDate - timeToSub)
+      return date
+    },
+    submitTask () {
       let payload = {
-        type: "addTask",
+        type: 'addTask',
         data: {
           user_id: this.$store.state.user_id,
-          priority_id: this.priority,
+          priority_id: this.priority.priority_id,
           title: this.name,
           description: this.description,
           due_date: this.date,
           createdDate: Date.now(),
-          completed: 0
+          completed: 0,
+          start_remind_date: computeStartRemindDate(this.date, this.priority)
         }
       }
       console.log(payload)
       this.$http.post(this.api(), payload).then(r => {
         console.log(r)
+      }).catch(e => {
+        console.log(e)
+      })
+    },
+    created: function () {
+      let payload = {
+        type: 'getTasks',
+        data: {
+          user_id: this.$store.state.user_id
+        }
+      }
+      this.$http.post(this.api(), payload).then(r => {
+        vm.$store.commit('updateField', { tasks: r.data.response })
       }).catch(e => {
         console.log(e)
       })
