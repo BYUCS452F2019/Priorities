@@ -23,9 +23,21 @@ export default new Vuex.Store({
         type: payload.priorityPayload.data.type,
         user_id: state.user_id
       }
-      console.log(priority)
-      console.log(payload)
       state.priorities.push(priority)
+    },
+    addToTasks(state, payload) {
+      let task = {
+        task_id: payload.task_id,
+        user_id: payload.taskPayload.data.user_id,
+        priority_id: payload.taskPayload.data.priority_id,
+        title: payload.taskPayload.data.title,
+        description: payload.taskPayload.data.description,
+        due_date: payload.taskPayload.data.due_date,
+        createdDate: payload.taskPayload.data.createdDate,
+        completed: payload.taskPayload.data.completed,
+        start_remind_date: payload.taskPayload.data.start_remind_date,
+      }
+      state.tasks.push(task)
     }
   },
   actions: {

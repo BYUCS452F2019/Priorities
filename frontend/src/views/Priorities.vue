@@ -29,7 +29,6 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary my-3" @click.stop.prevent="submitPriority">Create Priority</button>
-      <span>{{msg}}</span>
     </form>
   </div>
 </template>

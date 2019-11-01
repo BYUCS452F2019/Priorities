@@ -78,6 +78,15 @@ public class DaoManager {
       if (isPrimitive(type)) {// check primitive type(Point 5)
         Class<?> boxed = boxPrimitiveClass(type);// box if primitive(Point 6)
         value = boxed.cast(value);
+      } if (type == java.sql.Date.class) {
+        Timestamp time = (Timestamp)value;
+        value = new java.sql.Date(time.getTime());
+      } if (type == Boolean.class) {
+        if ((Integer)value == 1) {
+          value = true;
+        } else {
+          value = false;
+        }
       }
       field.set(object, value);
     }
@@ -120,7 +129,7 @@ public class DaoManager {
     stmt.execute(sql);
     ResultSet result = stmt.executeQuery(sql);
     while (result.next()) {
-      id = result.getInt(0);
+      id = result.getInt(1);
     }
     conn.commit();
     DaoManager.closeConnection(conn);

@@ -19,11 +19,11 @@ public class UserDao {
         }
     }
 
-    public static Integer getUserID(String user_name, String password) {
+    public static Integer getUserID(String email, String password) {
         Integer user_id = null;
-        String sql = "SELECT user_id FROM user WHERE user_name = " 
-                        + user_name + " and password = " 
-                        + password;
+        String sql = "SELECT user_id FROM user WHERE email = '" 
+                        + email + "' and password = '" 
+                        + password + "'";
 
         try {
             user_id = DaoManager.getObjectID(sql);

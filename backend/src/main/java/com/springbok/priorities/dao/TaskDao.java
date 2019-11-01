@@ -2,19 +2,20 @@ package com.springbok.priorities.dao;
 
 import java.util.List;
 
+
 import com.springbok.priorities.models.TaskModel;
 
 public class TaskDao {
     public static Integer create(TaskModel task) {
-        String sql = "INSERT into task (user_id, priority_id, title, descrition, completed, creation_date, due_date, start_remind_date) VALUES ("
+        String sql = "INSERT into task (user_id, priority_id, title, description, completed, creation_date, due_date, start_remind_date) VALUES ("
                         + task.user_id + ", " 
                         + task.priority_id + ", '" 
                         + task.title + "', '" 
                         + task.description + "', " 
-                        + 0 + ", "
-                        + task.creation_date + ", " 
-                        + task.due_date + ", "
-                        + task.start_remind_date;
+                        + 0 + ", '"
+                        + task.creation_date + "', '" 
+                        + task.due_date + "', '"
+                        + task.start_remind_date + "')";
 
         try {
             return DaoManager.createObject(sql);
@@ -26,7 +27,7 @@ public class TaskDao {
 
     public static List<TaskModel> getTasksForUserID(Integer userID) {
         String sql = "SELECT * FROM task WHERE user_id = " + userID
-                        + "AND CURDATE() >= start_remind_date";
+                        + " AND CURDATE() >= start_remind_date";
         
         try {
             return DaoManager.getObjects(TaskModel.class, sql);

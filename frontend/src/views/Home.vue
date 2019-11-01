@@ -2,7 +2,7 @@
   <div class="home">
     <Navigation></Navigation>
     <h1>Welcome to Priorities</h1>
-    <p v-if="loggedIn">Please <a href="/#/login">login</a></p>
+    <p v-if="true">Please <a href="/#/login">login</a></p>
     <p v-else>Please <a href="/#/register">Register</a></p>
     <p>{{msg}}</p>
   </div>
