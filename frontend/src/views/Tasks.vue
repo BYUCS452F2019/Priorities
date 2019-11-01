@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navigation></Navigation>
-    <div class="card" style="width: 60rem;" v-for="item in tasks" v-bind:key="item.id">
+    <div class="card" style="width: 60rem;" v-for="item in $store.state.tasks" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
         <p>Due date: {{ item.due }}</p>
@@ -30,7 +30,7 @@
           </option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary my-3">Create task</button>
+      <button type="submit" class="btn btn-primary my-3" @click.stop.prevent="submitTask">Create task</button>
       <span>{{msg}}</span>
     </form>
   </div>
@@ -79,9 +79,20 @@ export default {
     toggleForm: function () {
       this.showForm = true
     },
-    submitTask() {
+    computeStartRemindDate (dueDate, priority) {
+      let timeToSub = 0
+      if (priority.type === 1) {
+        timeToSub = priority.time
+      } else {
+        timeToSub = priority.time * 7
+      }
+      let date = new Date()
+      date.setDate(dueDate - timeToSub)
+      return date
+    },
+    submitTask () {
       let payload = {
-        type: "addTask",
+        type: 'addTask',
         data: {
           user_id: this.$store.state.user_id,
           priority_id: this.priority.priority_id,
@@ -100,17 +111,18 @@ export default {
         console.log(e)
       })
     },
-    computeStartRemindDate(dueDate, priority) {
-      let timeToSub = 0
-      if(priority.type == 1) {
-        timeToSub = priority.time
+    created: function () {
+      let payload = {
+        type: 'getTasks',
+        data: {
+          user_id: this.$store.state.user_id
+        }
       }
-      else {
-        timeToSub = priority.time * 7
-      }
-      let date = new Date();
-      date.setDate(dueDate - timeToSub);
-      return date
+      this.$http.post(this.api(), payload).then(r => {
+        vm.$store.commit('updateField', { tasks: r.data.response })
+      }).catch(e => {
+        console.log(e)
+      })
     }
   }
 }

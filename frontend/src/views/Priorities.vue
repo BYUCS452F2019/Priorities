@@ -4,7 +4,7 @@
     <div class="card" style="width: 60rem;" v-for="item in $store.state.priorities" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
-        <p class="card-text">Priority: {{ item.number }} {{ item.type }}(s)</p>
+        <p class="card-text">Priority: {{ item.number }} getType({{item.type}})(s)</p>
       </div>
     </div>
     <button type="button" class="btn btn-primary my-5" @click.stop.prevent="toggleForm()">Add priority</button>
@@ -38,24 +38,20 @@
 import Navigation from '../components/Nav.vue'
 export default {
   name: 'Priorities',
-  data: function() {
+  data: function () {
     return {
       showForm: false,
-      priorityName: "",
-      priorityNumber: "",
-      selected: "",
+      priorityName: '',
+      priorityNumber: '',
+      selected: '',
       timePeriods: [
         {
-          value: 0,
-          label: "Hours"
-        },
-        {
           value: 1,
-          label: "Days"
+          label: 'Days'
         },
         {
           value: 2,
-          label: "Weeks"
+          label: 'Weeks'
         }
       ]
     }
@@ -67,9 +63,9 @@ export default {
     toggleForm: function () {
       this.showForm = true
     },
-    submitPriority() {
+    submitPriority () {
       let payload = {
-        type: "addPriority", 
+        type: 'addPriority',
         data: {
           user_id: this.$store.state.user_id,
           title: this.priorityName,
@@ -85,24 +81,23 @@ export default {
       })
     }
   },
-  created: function() {
+  created: function () {
     let payload = {
-      type: "getPriorities",
+      type: 'getPriorities',
       data: {
         user_id: this.$store.state.user_id
       }
     }
     this.$http.post(this.api(), payload).then(r => {
-      vm.$store.commit('updateField', {priorities: r.data.response})
+      vm.$store.commit('updateField', { priorities: r.data.response })
     }).catch(e => {
       console.log(e)
     })
   },
-  getType(type) {
-    if(type == 1) {
+  getType (type) {
+    if (type === 1) {
       return 'Day(s)'
-    }
-    else {
+    } else {
       return 'Week(s)'
     }
   }
