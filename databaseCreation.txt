@@ -12,6 +12,7 @@ CREATE TABLE `priorities`.`task` (
   `user_id` INT NOT NULL,
   `priority_id` INT NOT NULL,
   `due_date` DATETIME NOT NULL,
+  `start_remind_date` DATETIME NOT NULL,
   `title` CHAR(255) NOT NULL,
   `creation_date` DATETIME NOT NULL,
   `description` LONGTEXT NULL,
@@ -22,6 +23,6 @@ CREATE TABLE `priorities`.`priority` (
   `priority_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `title` CHAR(255) NOT NULL,
-  `type` CHAR(45) NOT NULL,
+  `type` int(2) NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`priority_id`));
