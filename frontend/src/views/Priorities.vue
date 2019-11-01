@@ -64,11 +64,8 @@ export default {
         }
       ],
       timePeriods: [
-        'Hour(s)',
         'Day(s)',
-        'Week(s)',
-        'Month(s)',
-        'Year(s)'
+        'Week(s)'
       ],
       showForm: false,
       selected: '',
