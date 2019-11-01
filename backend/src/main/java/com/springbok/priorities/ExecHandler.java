@@ -38,9 +38,9 @@ public class ExecHandler implements HttpHandler {
             System.out.println(requestJson);
             boolean requestBody = !requestJson.isEmpty();
 
-            if (!authCode.isEmpty()) {
-                authorized = Authorizer.checkAuthorization(authCode);
-            } 
+            // if (!authCode.isEmpty()) {
+            //     authorized = Authorizer.checkAuthorization(authCode);
+            // } 
 
             System.out.println(requestBody);
         
