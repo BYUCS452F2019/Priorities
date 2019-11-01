@@ -21,7 +21,7 @@
           <input v-model="priorityNumber" type="text" class="form-control" id="priorityNumber" placeholder="1, 2, 3...">
         </div>
         <div class="col">
-          <select v-model="selected" style="width: 7rem;">
+          <select v-model="selected" class="form-control">
             <option v-for="option in timePeriods" v-bind:value="option.value" v-bind:key="option.value">
               {{ option.label }}
             </option>
