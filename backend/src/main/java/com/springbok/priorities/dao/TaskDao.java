@@ -15,7 +15,7 @@ public class TaskDao {
                         + task.creation_date + ", " 
                         + task.due_date + ", "
                         + task.start_remind_date;
-                        
+
         try {
             return DaoManager.createObject(sql);
         } catch (Exception exception) {
@@ -27,6 +27,7 @@ public class TaskDao {
     public static List<TaskModel> getTasksForUserID(String userID) {
         String sql = "SELECT * FROM task WHERE user_id = " + userID
                         + "AND CURDATE() >= start_remind_date";
+        
         try {
             return DaoManager.getObjects(TaskModel.class, sql);
         } catch (Exception exception) {

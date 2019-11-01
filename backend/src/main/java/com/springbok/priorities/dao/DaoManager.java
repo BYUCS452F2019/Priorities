@@ -14,7 +14,7 @@ public class DaoManager {
     Connection conn = null;
     String url = "jdbc:mysql://localhost:3306/priorities?useLegacyDatetimeCode=false&serverTimezone=MST";
     String user = "root";
-    String password = "root";
+    String password = "j74798189b";
 
     conn = DriverManager.getConnection(url, user, password);
     conn.setAutoCommit(false);
@@ -30,6 +30,8 @@ public class DaoManager {
   }
 
   public static Integer createObject(String sql) throws SQLException {
+    System.out.println(sql);
+    
     Integer id = -1;
     Connection conn = DaoManager.getConnection();
     Statement stmt = conn.createStatement();
@@ -45,11 +47,15 @@ public class DaoManager {
   }
 
   public static <T> T getObject(Class<T> type, String sql) throws Exception {
+    System.out.println(sql);
+
     List<T> list = DaoManager.getObjects(type, sql);
     return list.get(0);
   }
 
   public static <T> List<T> getObjects(Class<T> type, String sql) throws Exception {
+    System.out.println(sql);
+
     List<T> list = new ArrayList<T>();
     Connection conn = DaoManager.getConnection();
     Statement stmt = conn.createStatement();
@@ -108,6 +114,8 @@ public class DaoManager {
   }
 
   public static Integer getObjectID(String sql) throws SQLException {
+    System.out.println(sql);
+
     Integer id = -1;
     Connection conn = DaoManager.getConnection();
     Statement stmt = conn.createStatement();

@@ -13,7 +13,7 @@ public class PriorityDao {
                         + priority.type + "', "
                         + priority.number
                         + ")";
-        System.out.println(sql); 
+
         try {
             return DaoManager.createObject(sql);
         } catch (Exception exception) {
@@ -24,6 +24,7 @@ public class PriorityDao {
 
     public static List<PriorityModel> getPrioritiesForUserID(String userID) {
         String sql = "SELECT * FROM priority WHERE user_id = " + userID;
+
         try {
             return DaoManager.getObjects(PriorityModel.class, sql);
         } catch (Exception exception) {
@@ -33,13 +34,13 @@ public class PriorityDao {
     }
 
     public static Boolean updatePriority(PriorityModel priority) {
-      String sql = "UPDATE priority SET"
-                    + "user_id" + priority.user_id
-                    + "title" + priority.title
-                    + "type" + priority.type
-                    + "number" + priority.number
-                    + "WHERE priority_id = " + priority.priority_id;
-                        
+        String sql = "UPDATE priority SET"
+                        + "user_id" + priority.user_id
+                        + "title" + priority.title
+                        + "type" + priority.type
+                        + "number" + priority.number
+                        + "WHERE priority_id = " + priority.priority_id;
+
         try {
             return DaoManager.updateObject(sql);
         } catch (Exception exception) {
