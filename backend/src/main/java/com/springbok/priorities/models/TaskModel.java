@@ -10,15 +10,17 @@ public class TaskModel {
     @DBTable(columnName = "priority_id")
     public Integer priority_id;
     @DBTable(columnName = "due_date")
-    public String due_date;
+    public Date due_date;
+    @DBTable(columnName = "start_remind_date")
+    public Date start_remind_date;
     @DBTable(columnName = "title")
     public String title;
     @DBTable(columnName = "creation_date")
-    public Boolean creation_date;
+    public Date creation_date;
     @DBTable(columnName = "description")
-    public Date description;
+    public String description;
     @DBTable(columnName = "completed")
-    public Date completed;
+    public Boolean completed;
 
     public Integer getTask_id() {
         return task_id;
@@ -44,48 +46,56 @@ public class TaskModel {
         this.priority_id = priority_id;
     }
 
-    public String getDue_date() {
-        return due_date;
+    public Date getDue_date() {
+        return this.due_date;
     }
 
-    public void setDue_date(String due_date) {
+    public void setDue_date(Date due_date) {
         this.due_date = due_date;
     }
 
+    public Date getStart_remind_date() {
+        return this.start_remind_date;
+    }
+
+    public void setStart_remind_date(Date start_remind_date) {
+        this.start_remind_date = start_remind_date;
+    }
+
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public Boolean getCreation_date() {
-        return creation_date;
+    public Date getCreation_date() {
+        return this.creation_date;
     }
 
-    public void setCreation_date(Boolean creation_date) {
+    public void setCreation_date(Date creation_date) {
         this.creation_date = creation_date;
     }
 
-    public Date getDescription() {
-        return description;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDescription(Date description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public Date getCompleted() {
-        return completed;
+    public Boolean getCompleted() {
+        return this.completed;
     }
 
-    public void setCompleted(Date completed) {
+    public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 
-    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, String due_date, String title,
-            Boolean creation_date, Date description, Date completed) {
+    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, Date due_date, String title,
+            Date creation_date, String description, Boolean completed) {
         this.task_id = task_id;
         this.user_id = user_id;
         this.priority_id = priority_id;

@@ -12,6 +12,7 @@ CREATE TABLE `priorities`.`task` (
   `user_id` INT NOT NULL,
   `priority_id` INT NOT NULL,
   `due_date` DATETIME NOT NULL,
+  `start_remind_date` DATETIME NOT NULL,
   `title` CHAR(255) NOT NULL,
   `creation_date` DATETIME NOT NULL,
   `description` LONGTEXT NULL,
