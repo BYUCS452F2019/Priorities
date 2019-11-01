@@ -25,7 +25,7 @@
       </div>
       <div>
         <select v-model="priority">
-          <option v-for="option in $store.state.priorities" v-bind:value="option.priority_id" v-bind:key="option">
+          <option v-for="option in $store.state.priorities" v-bind:value="option" v-bind:key="option">
             {{ option.title }}
           </option>
         </select>
@@ -84,12 +84,13 @@ export default {
         type: "addTask",
         data: {
           user_id: this.$store.state.user_id,
-          priority_id: this.priority,
+          priority_id: this.priority.priority_id,
           title: this.name,
           description: this.description,
           due_date: this.date,
           createdDate: Date.now(),
-          completed: 0
+          completed: 0,
+          start_remind_date: computeStartRemindDate(this.date, this.priority)
         }
       }
       console.log(payload)
@@ -98,6 +99,18 @@ export default {
       }).catch(e => {
         console.log(e)
       })
+    },
+    computeStartRemindDate(dueDate, priority) {
+      let timeToSub = 0
+      if(priority.type == 1) {
+        timeToSub = priority.time
+      }
+      else {
+        timeToSub = priority.time * 7
+      }
+      let date = new Date();
+      date.setDate(dueDate - timeToSub);
+      return date
     }
   }
 }

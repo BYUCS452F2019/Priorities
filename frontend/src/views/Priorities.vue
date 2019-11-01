@@ -97,6 +97,14 @@ export default {
     }).catch(e => {
       console.log(e)
     })
+  },
+  getType(type) {
+    if(type == 1) {
+      return 'Day(s)'
+    }
+    else {
+      return 'Week(s)'
+    }
   }
 }
 </script>
