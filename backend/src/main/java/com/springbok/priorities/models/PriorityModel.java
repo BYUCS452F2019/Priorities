@@ -59,4 +59,8 @@ public class PriorityModel {
     this.type = type;
     this.number = number;
   }
+
+  public PriorityModel() {
+    
+  }
 }

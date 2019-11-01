@@ -24,7 +24,7 @@ public class TaskDao {
         }
     }
 
-    public static List<TaskModel> getTasksForUserID(String userID) {
+    public static List<TaskModel> getTasksForUserID(Integer userID) {
         String sql = "SELECT * FROM task WHERE user_id = " + userID
                         + "AND CURDATE() >= start_remind_date";
         

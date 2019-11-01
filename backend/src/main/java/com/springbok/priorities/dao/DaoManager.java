@@ -14,7 +14,7 @@ public class DaoManager {
     Connection conn = null;
     String url = "jdbc:mysql://localhost:3306/priorities?useLegacyDatetimeCode=false&serverTimezone=MST";
     String user = "root";
-    String password = "j74798189b";
+    String password = "root";
 
     conn = DriverManager.getConnection(url, user, password);
     conn.setAutoCommit(false);
@@ -47,8 +47,6 @@ public class DaoManager {
   }
 
   public static <T> T getObject(Class<T> type, String sql) throws Exception {
-    System.out.println(sql);
-
     List<T> list = DaoManager.getObjects(type, sql);
     return list.get(0);
   }

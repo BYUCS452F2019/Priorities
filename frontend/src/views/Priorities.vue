@@ -4,7 +4,7 @@
     <div class="card" style="width: 60rem;" v-for="item in $store.state.priorities" v-bind:key="item.id">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
-        <p class="card-text">Priority: {{ item.number }} getType({{item.type}})(s)</p>
+        <p class="card-text">Priority: {{ item.title }} - Reminds me: {{item.number}} {{ getType(item.type, item.number) }} in advance</p>
       </div>
     </div>
     <button type="button" class="btn btn-primary my-5" @click.stop.prevent="toggleForm()">Add priority</button>
@@ -22,7 +22,7 @@
         </div>
         <div class="col">
           <select v-model="selected" style="width: 7rem;">
-            <option v-for="option in timePeriods" v-bind:value="option.value" v-bind:key="option">
+            <option v-for="option in timePeriods" v-bind:value="option.value" v-bind:key="option.value">
               {{ option.label }}
             </option>
           </select>
@@ -74,32 +74,35 @@ export default {
         }
       }
       console.log(payload)
+      let vm = this
       this.$http.post(this.api(), payload).then(r => {
         console.log(r)
+        vm.$store.commit('addToPriorities', {priority_id: r.data.response, priorityPayload: payload})
       }).catch(e => {
         console.log(e)
       })
+    },
+    getType (type, number) {
+      if (type === 1) {
+        return number === 1 ? "Day" : "Days" 
+      } else {
+        return number === 1 ? "Week" : "Weeks"
+      }
     }
   },
   created: function () {
     let payload = {
-      type: 'getPriorities',
-      data: {
-        user_id: this.$store.state.user_id
+        type: 'getPriorities',
+        data: {
+          user_id: this.$store.state.user_id
+        }
       }
-    }
-    this.$http.post(this.api(), payload).then(r => {
-      vm.$store.commit('updateField', { priorities: r.data.response })
-    }).catch(e => {
-      console.log(e)
-    })
+      let vm = this
+      this.$http.post(this.api(), payload).then(r => {
+        vm.$store.commit('updateField', { priorities: r.data.response })
+      }).catch(e => {
+        console.log(e)
+      })
   },
-  getType (type) {
-    if (type === 1) {
-      return 'Day(s)'
-    } else {
-      return 'Week(s)'
-    }
-  }
 }
 </script>
