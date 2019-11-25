@@ -1,11 +1,11 @@
 package com.springbok.priorities.authorization;
 
-import com.springbok.priorities.dao.UserDao;
+import com.springbok.priorities.command.daofactory.DaoFactory;
 
 public class Authorizer {
   
   public static Integer getAuthorizationCode(String email, String password) {
-    return UserDao.getUserID(email, password);
+    return DaoFactory.getUserDao().getUserID(email, password);
   }
 
   public static boolean checkAuthorization(Integer authCode) {
