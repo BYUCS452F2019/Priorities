@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.springbok.priorities.command.*;
-import com.springbok.priorities.dao.PriorityDao;
+import com.springbok.priorities.command.daofactory.DaoFactory;
 import com.springbok.priorities.models.PriorityModel;
 
 public class CommandEditPriority implements CommandInterface {
@@ -17,7 +17,7 @@ public class CommandEditPriority implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(PriorityDao.updatePriority(priority), "no error");
+        return new CommandResult(DaoFactory.getPriorityDao().updatePriority(priority), "no error");
     }
 
 }

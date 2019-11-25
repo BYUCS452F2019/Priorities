@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.springbok.priorities.command.*;
-import com.springbok.priorities.dao.UserDao;
+import com.springbok.priorities.command.daofactory.DaoFactory;
 import com.springbok.priorities.models.UserModel;
 
 public class CommandLogin implements CommandInterface {
@@ -20,7 +20,7 @@ public class CommandLogin implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(UserDao.getUserID(this.username, this.password), "no error");
+        return new CommandResult(DaoFactory.getUserDao().getUserID(this.username, this.password), "no error");
     }
 
 }

@@ -4,8 +4,8 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.springbok.priorities.command.*;
+import com.springbok.priorities.command.daofactory.DaoFactory;
 import com.springbok.priorities.models.*;
-import com.springbok.priorities.dao.*;
 
 public class CommandRegister implements CommandInterface {
     private String username;
@@ -22,6 +22,6 @@ public class CommandRegister implements CommandInterface {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(UserDao.create(new UserModel(this.username, this.email, this.password)), "no error ever");
+        return new CommandResult(DaoFactory.getUserDao().create(new UserModel(this.username, this.email, this.password)), "no error ever");
     }
 }
