@@ -28,7 +28,7 @@ public class Server {
         httpServer.createContext("/", new ExecHandler ());
         System.out.println("Starting server");
         httpServer.start();
-        System.out.println("Server started");
+        System.out.println("Server started on port " + portNumber);
     }
 
     public static void main(String[] args){

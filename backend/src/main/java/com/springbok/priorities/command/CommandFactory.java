@@ -19,6 +19,10 @@ public class CommandFactory {
             return new CommandEditPriority(commandData);
         } else if (type.equals("editTask")) {
             return new CommandEditTask(commandData);
+        } else if (type.equals("getTasks")) {
+            return new CommandGetTasks(commandData);
+        } else if (type.equals("getPriorities")) {
+            return new CommandGetPriorities(commandData);
         } else {
             return null;
         }

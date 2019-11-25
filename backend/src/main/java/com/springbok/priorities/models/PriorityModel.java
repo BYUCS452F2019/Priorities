@@ -8,7 +8,7 @@ public class PriorityModel {
   @DBTable(columnName = "title")
   public String title;
   @DBTable(columnName = "type")
-  public String type;
+  public Integer type;  // Possible values in enum `PriorityTypeIDs`.
   @DBTable(columnName = "number")
   public Integer number;
 
@@ -36,11 +36,11 @@ public class PriorityModel {
     this.title = title;
   }
 
-  public String getType() {
+  public Integer getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(Integer type) {
     this.type = type;
   }
 
@@ -52,11 +52,15 @@ public class PriorityModel {
     this.number = number;
   }
 
-  public PriorityModel(Integer priority_id, Integer user_id, String title, String type, Integer number) {
+  public PriorityModel(Integer priority_id, Integer user_id, String title, Integer type, Integer number) {
     this.priority_id = priority_id;
     this.user_id = user_id;
     this.title = title;
     this.type = type;
     this.number = number;
+  }
+
+  public PriorityModel() {
+    
   }
 }
