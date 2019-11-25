@@ -6,6 +6,6 @@ import com.springbok.priorities.models.PriorityModel;
 
 public interface PriorityDaoInterface {
     public Integer create(PriorityModel priority);
-    public List<PriorityModel> getTasksForUserID(String userID);
+    public List<PriorityModel> getPrioritiesForUserID(String userID);
     public Boolean updatePriority(PriorityModel priority);
 }
