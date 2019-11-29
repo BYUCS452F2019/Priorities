@@ -2,7 +2,7 @@ package com.springbok.priorities.sqldao;
 
 import java.util.List;
 
-import com.springbok.priorities.command.daofactory.TaskDaoInterface;
+import com.springbok.priorities.daofactory.TaskDaoInterface;
 import com.springbok.priorities.models.TaskModel;
 
 public class SQLTaskDao implements TaskDaoInterface{

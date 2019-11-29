@@ -2,7 +2,7 @@ package com.springbok.priorities.sqldao;
 
 import java.sql.SQLException;
 
-import com.springbok.priorities.command.daofactory.UserDaoInterface;
+import com.springbok.priorities.daofactory.UserDaoInterface;
 import com.springbok.priorities.models.UserModel;
 
 public class SQLUserDao implements UserDaoInterface {

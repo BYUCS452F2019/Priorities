@@ -2,7 +2,7 @@ package com.springbok.priorities.sqldao;
 
 import java.util.List;
 
-import com.springbok.priorities.command.daofactory.PriorityDaoInterface;
+import com.springbok.priorities.daofactory.PriorityDaoInterface;
 import com.springbok.priorities.models.PriorityModel;;
 
 public class SQLPriorityDao implements PriorityDaoInterface {

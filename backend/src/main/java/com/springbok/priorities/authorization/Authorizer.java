@@ -1,6 +1,6 @@
 package com.springbok.priorities.authorization;
 
-import com.springbok.priorities.command.daofactory.DaoFactory;
+import com.springbok.priorities.daofactory.DaoFactory;
 
 public class Authorizer {
   

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.springbok.priorities.command.*;
-import com.springbok.priorities.command.daofactory.DaoFactory;
+import com.springbok.priorities.daofactory.DaoFactory;
 import com.springbok.priorities.models.PriorityModel;
 
 public class CommandEditPriority implements CommandInterface {

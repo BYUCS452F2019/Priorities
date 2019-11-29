@@ -6,7 +6,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.springbok.priorities.command.*;
-import com.springbok.priorities.command.daofactory.DaoFactory;
+import com.springbok.priorities.daofactory.DaoFactory;
 import com.springbok.priorities.models.TaskModel;
 
 public class CommandAddTask implements CommandInterface {
