@@ -15,16 +15,13 @@ public class MongoDaoManager {
     public static MongoCollection<Document> getCollection(String collection_name) {
         final String databaseHost = "localhost";
         
-        MongoCredential credential = MongoCredential.createCredential("userName", "database", "password".toCharArray());
-
         MongoClient mongoClient = MongoClients.create(
             MongoClientSettings.builder()
                 .applyToClusterSettings(builder -> 
                     builder.hosts(Arrays.asList(new ServerAddress(databaseHost))))
-                .credential(credential)
                 .build());
 
-        return mongoClient.getDatabase("databaseName").getCollection(collection_name);
+        return mongoClient.getDatabase("priorities").getCollection(collection_name);
     }
 
 }
