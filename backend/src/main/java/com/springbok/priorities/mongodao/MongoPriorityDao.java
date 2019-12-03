@@ -72,7 +72,7 @@ public class MongoPriorityDao implements PriorityDaoInterface{
 
         coll.updateOne(
             and(eq("priority_id", priority.getPriority_id()), eq("user_id", priority.getUser_id())),
-            combine(set(), set(), set(), set(), set())
+            combine(set("type", priority.getType()), set("number", priority.getNumber()), set("title", priority.getTitle()))
             );
 
         return true;
