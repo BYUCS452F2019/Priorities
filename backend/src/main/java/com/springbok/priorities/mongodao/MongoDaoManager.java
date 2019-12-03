@@ -1,7 +1,5 @@
 package com.springbok.priorities.mongodao;
 
-import com.mongodb.client.MongoDatabase;
-
 import org.bson.Document;
 
 import java.util.Arrays;

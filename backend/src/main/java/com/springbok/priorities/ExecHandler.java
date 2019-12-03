@@ -1,6 +1,5 @@
 package com.springbok.priorities;
 
-import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
 import static java.net.HttpURLConnection.HTTP_OK;
 
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.springbok.priorities.authorization.Authorizer;
 import com.springbok.priorities.command.CommandManager;
 import com.springbok.priorities.command.CommandResult;
 import com.sun.net.httpserver.HttpExchange;
