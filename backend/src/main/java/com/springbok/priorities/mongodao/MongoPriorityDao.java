@@ -5,16 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mongodb.BasicDBObject;
-import com.mongodb.Block;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 import com.mongodb.client.MongoCollection;
 import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Updates.*;
+
+import com.mongodb.Block;
 import org.bson.Document;
-import com.mongodb.client.model.Updates;
 
 import com.springbok.priorities.daofactory.PriorityDaoInterface;
 import com.springbok.priorities.models.PriorityModel;
