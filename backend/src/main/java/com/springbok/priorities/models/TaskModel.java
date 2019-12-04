@@ -110,4 +110,13 @@ public class TaskModel {
     public TaskModel() {
         
     }
+
+    @Override
+    public String toString() {
+        return "TaskModel [completed=" + completed + ", creation_date=" + creation_date + ", description=" + description
+                + ", due_date=" + due_date + ", priority_id=" + priority_id + ", start_remind_date=" + start_remind_date
+                + ", task_id=" + task_id + ", title=" + title + ", user_id=" + user_id + "]";
+    }
+
+    
 }
