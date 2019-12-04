@@ -23,7 +23,7 @@ public class SQLUserDao implements UserDaoInterface {
     public Integer getUserID(String username, String password) {
         Integer user_id = null;
         try {
-            String sql = "SELECT user_id FROM user WHERE username = " + username + " and password = " + password;
+            String sql = "SELECT user_id FROM user WHERE username = '" + username + "' and password = '" + password + "'";
             user_id = SQLDaoManager.getObjectID(sql);
             return user_id;
         } catch (SQLException sqlE) {
