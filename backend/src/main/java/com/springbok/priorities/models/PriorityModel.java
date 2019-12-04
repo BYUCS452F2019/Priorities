@@ -63,4 +63,12 @@ public class PriorityModel {
   public PriorityModel() {
     
   }
+
+  @Override
+  public String toString() {
+    return "PriorityModel [number=" + number + ", priority_id=" + priority_id + ", title=" + title + ", type=" + type
+        + ", user_id=" + user_id + "]";
+  }
+
+  
 }

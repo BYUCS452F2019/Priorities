@@ -5,7 +5,6 @@ import org.bson.Document;
 import java.util.Arrays;
 
 import com.mongodb.MongoClientSettings;
-import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
