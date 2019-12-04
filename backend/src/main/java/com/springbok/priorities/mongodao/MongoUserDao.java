@@ -10,6 +10,9 @@ import static com.mongodb.client.model.Updates.*;
 import com.mongodb.Block;
 import org.bson.Document;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MongoUserDao implements UserDaoInterface {
 
     private static final String USER_COLLECTION = "user_collection";
@@ -35,17 +38,20 @@ public class MongoUserDao implements UserDaoInterface {
 
     @Override
     public Integer getUserID(String user_name, String password) {
-        UserModel user;
+        Integer userId;
 
         MongoCollection<Document> coll = MongoDaoManager.getCollection(USER_COLLECTION);
-        coll.find(and(eq("username", user_name), eq("password"), password)).forEach(new Block<Document>() {
+        coll.find(and(eq("username", user_name), eq("password", password)).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
-                return (Integer) t.get("user_id");
+                userId = (Integer) t.get("user_id");
             }
         });
 
-        throw new Exception("Could not find user with username and password");
+        if(userId == null) {
+            throw new Exception("Could not find user with username and password");
+        }
+        return userId;
     }
 
     @Override
@@ -62,9 +68,11 @@ public class MongoUserDao implements UserDaoInterface {
                     (String) t.get("email"),
                     (String) t.get("password")
                 ));
-                return t.get("user_id");
             }
         });
+        if(user == null) {
+            throw new Exception("Unable to find user with that user id");
+        }
         return user;
     }
 
