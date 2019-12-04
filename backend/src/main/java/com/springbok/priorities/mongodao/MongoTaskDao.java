@@ -25,7 +25,7 @@ public class MongoTaskDao implements TaskDaoInterface{
         
         MongoCollection<Document> coll = MongoDaoManager.getCollection(TASK_COLLECTION);
 
-        coll.find(and(eq("user_id", userID))).forEach(new Block<Document>() {
+        coll.find(and(eq("user_id", Double.parseDouble(userID)))).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
                 taskList.add(new TaskModel(
