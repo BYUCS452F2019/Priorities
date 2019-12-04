@@ -101,6 +101,7 @@ export default {
         console.log(r)
         if (Date.now() >= payload.data.start_remind_date) {
           vm.$store.commit('addToTasks', {task_id: r.data.response, taskPayload: payload})
+          taskAdded()
         }
       }).catch(e => {
         console.log(e)
@@ -115,6 +116,13 @@ export default {
       } else {
         return ''
       }
+    },
+    taskAdded() {
+      this.priority = ''
+      this.name = ''
+      this.description = ''
+      this.date = ''
+      this.showForm = false
     }
   },
   created: function () {
