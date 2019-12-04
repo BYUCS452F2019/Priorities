@@ -10,14 +10,15 @@ public class SQLTaskDao implements TaskDaoInterface{
     @Override
     public Integer create(TaskModel task) {
         System.out.println(task.toString());
-        String sql = "INSERT into task (user_id, priority_id, title, description, completed, creation_date, due_date) VALUES ("
+        String sql = "INSERT into task (user_id, priority_id, title, description, completed, creation_date, due_date, start_remind_date) VALUES ("
                         + task.user_id + ", " 
                         + task.priority_id + ", '" 
                         + task.title + "', '" 
                         + task.description + "', " 
-                        + task.completed + ", "
-                        + task.creation_date + ", " 
-                        + task.due_date + ")";
+                        + task.completed + ", '"
+                        + task.creation_date + "', '" 
+                        + task.due_date + "', '" 
+                        + task.start_remind_date + "')";
                         
         try {
             return SQLDaoManager.createObject(sql);
