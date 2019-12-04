@@ -52,7 +52,8 @@ export default {
       }
       let vm = this
       await this.$http.post(this.api(), requestInfo).then(function (response) {
-        vm.$store.commit('updateField', {user_id: response.data.response})
+
+        vm.$store.commit('updateField', {user_id: `${response.data.response}`})
       }).catch(function (error) {
         console.log(error)
       })
