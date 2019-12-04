@@ -25,7 +25,7 @@ public class MongoPriorityDao implements PriorityDaoInterface{
         
         MongoCollection<Document> coll = MongoDaoManager.getCollection(PRIORITY_COLLECTION);
 
-        coll.find(and(eq("user_id", userID))).forEach(new Block<Document>() {
+        coll.find(and(eq("user_id", Double.parseDouble(userID)))).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
                 prioritiesList.add(new PriorityModel(
