@@ -4,7 +4,7 @@ import com.springbok.priorities.daofactory.TaskDaoInterface;
 import com.springbok.priorities.models.TaskModel;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,10 +32,10 @@ public class MongoTaskDao implements TaskDaoInterface{
                     (Integer) t.get("task_id"),
                     (Integer) t.get("user_id"),
                     (Integer) t.get("priority_id"),
-                    (Date) t.get("due_date"),
-                    (Date) t.get("start_remind_date"),
+                    (Timestamp) t.get("due_date"),
+                    (Timestamp) t.get("start_remind_date"),
                     (String) t.get("title"),
-                    (Date) t.get("creation_date"),
+                    (Timestamp) t.get("creation_date"),
                     (String) t.get("description"),
                     (Boolean) t.get("completed")
                 ));

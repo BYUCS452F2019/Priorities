@@ -1,6 +1,6 @@
 package com.springbok.priorities.models;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class TaskModel {
     @DBTable(columnName = "task_id")
@@ -10,13 +10,13 @@ public class TaskModel {
     @DBTable(columnName = "priority_id")
     public Integer priority_id;
     @DBTable(columnName = "due_date")
-    public Date due_date;
+    public Timestamp due_date;
     @DBTable(columnName = "start_remind_date")
-    public Date start_remind_date;
+    public Timestamp start_remind_date;
     @DBTable(columnName = "title")
     public String title;
     @DBTable(columnName = "creation_date")
-    public Date creation_date;
+    public Timestamp creation_date;
     @DBTable(columnName = "description")
     public String description;
     @DBTable(columnName = "completed")
@@ -46,19 +46,19 @@ public class TaskModel {
         this.priority_id = priority_id;
     }
 
-    public Date getDue_date() {
+    public Timestamp getDue_date() {
         return this.due_date;
     }
 
-    public void setDue_date(Date due_date) {
+    public void setDue_date(Timestamp due_date) {
         this.due_date = due_date;
     }
 
-    public Date getStart_remind_date() {
+    public Timestamp getStart_remind_date() {
         return this.start_remind_date;
     }
 
-    public void setStart_remind_date(Date start_remind_date) {
+    public void setStart_remind_date(Timestamp start_remind_date) {
         this.start_remind_date = start_remind_date;
     }
 
@@ -70,11 +70,11 @@ public class TaskModel {
         this.title = title;
     }
 
-    public Date getCreation_date() {
+    public Timestamp getCreation_date() {
         return this.creation_date;
     }
 
-    public void setCreation_date(Date creation_date) {
+    public void setCreation_date(Timestamp creation_date) {
         this.creation_date = creation_date;
     }
 
@@ -94,8 +94,8 @@ public class TaskModel {
         this.completed = completed;
     }
 
-    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, Date due_date, Date start_remind_date, String title,
-            Date creation_date, String description, Boolean completed) {
+    public TaskModel(Integer task_id, Integer user_id, Integer priority_id, Timestamp due_date, Timestamp start_remind_date, String title,
+            Timestamp creation_date, String description, Boolean completed) {
         this.task_id = task_id;
         this.user_id = user_id;
         this.priority_id = priority_id;
