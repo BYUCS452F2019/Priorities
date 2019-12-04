@@ -75,7 +75,11 @@ public class SQLDaoManager {
         Class<?> boxed = boxPrimitiveClass(type);// box if primitive(Point 6)
         value = boxed.cast(value);
       }
+      System.out.println(type);
+      System.out.println(value);
       if (type == boolean.class) {
+        System.out.println(type);
+        System.out.println(value);
         if ((int)value == 0) {
           value = false;
         } else if ((int) value == 1) {
