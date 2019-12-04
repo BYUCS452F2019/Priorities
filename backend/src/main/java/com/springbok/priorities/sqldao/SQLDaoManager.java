@@ -77,7 +77,7 @@ public class SQLDaoManager {
       }
       System.out.println(type);
       System.out.println(value);
-      if (type == boolean.class) {
+      if (type == Boolean.class) {
         System.out.println(type);
         System.out.println(value);
         if ((int)value == 0) {
