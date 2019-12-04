@@ -50,9 +50,6 @@ public class MongoUserDao implements UserDaoInterface {
             }
         });
 
-        if(userId == null) {
-            throw new Exception("Could not find user with username and password");
-        }
         return userId.get(0);
     }
 
@@ -72,9 +69,7 @@ public class MongoUserDao implements UserDaoInterface {
                 ));
             }
         });
-        if(user == null) {
-            throw new Exception("Unable to find user with that user id");
-        }
+
         return user.get(0);
     }
 
