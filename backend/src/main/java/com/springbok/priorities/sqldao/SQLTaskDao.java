@@ -16,7 +16,7 @@ public class SQLTaskDao implements TaskDaoInterface{
                         + task.description + "', " 
                         + task.completed + ", "
                         + task.creation_date + ", " 
-                        + task.due_date;
+                        + task.due_date + ")";
                         
         try {
             return SQLDaoManager.createObject(sql);
