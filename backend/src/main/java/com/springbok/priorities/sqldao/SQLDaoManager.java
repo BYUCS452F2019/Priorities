@@ -114,7 +114,7 @@ public class SQLDaoManager {
     stmt.execute(sql);
     ResultSet result = stmt.executeQuery(sql);
     while (result.next()) {
-      id = result.getInt(0);
+      id = result.getInt(1);
     }
     conn.commit();
     SQLDaoManager.closeConnection(conn);
