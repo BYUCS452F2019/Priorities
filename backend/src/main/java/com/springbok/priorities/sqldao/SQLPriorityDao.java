@@ -25,7 +25,7 @@ public class SQLPriorityDao implements PriorityDaoInterface {
     }
 
     @Override
-    public List<PriorityModel> getPrioritiesForUserID(String userID) {
+    public List<PriorityModel> getPrioritiesForUserID(Double userID) {
         String sql = "SELECT * FROM priority WHERE user_id = " + userID;
         try {
             return SQLDaoManager.getObjects(PriorityModel.class, sql);

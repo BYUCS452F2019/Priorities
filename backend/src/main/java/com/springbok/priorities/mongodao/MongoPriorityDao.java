@@ -20,12 +20,12 @@ public class MongoPriorityDao implements PriorityDaoInterface{
     private static final String PRIORITY_COLLECTION = "priority_collection";
 
     @Override
-    public List<PriorityModel> getPrioritiesForUserID(String userID) {
+    public List<PriorityModel> getPrioritiesForUserID(Double userID) {
         List<PriorityModel> prioritiesList = new ArrayList<>();
         
         MongoCollection<Document> coll = MongoDaoManager.getCollection(PRIORITY_COLLECTION);
 
-        coll.find(and(eq("user_id", Double.parseDouble(userID)))).forEach(new Block<Document>() {
+        coll.find(and(eq("user_id", userID))).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
                 prioritiesList.add(new PriorityModel(

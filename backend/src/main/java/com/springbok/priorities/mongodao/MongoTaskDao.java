@@ -20,12 +20,12 @@ public class MongoTaskDao implements TaskDaoInterface{
     private final static String TASK_COLLECTION = "task";
 
     @Override
-    public List<TaskModel> getTasksForUserID(String userID) {
+    public List<TaskModel> getTasksForUserID(Double userID) {
         List<TaskModel> taskList = new ArrayList<>();
         
         MongoCollection<Document> coll = MongoDaoManager.getCollection(TASK_COLLECTION);
 
-        coll.find(and(eq("user_id", Double.parseDouble(userID)))).forEach(new Block<Document>() {
+        coll.find(and(eq("user_id", userID))).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
                 taskList.add(new TaskModel(

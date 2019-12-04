@@ -6,10 +6,10 @@ import com.springbok.priorities.command.*;
 import com.springbok.priorities.daofactory.DaoFactory;
 
 public class CommandGetPriorities implements CommandInterface {
-    private String user_id;
+    private Double user_id;
 
     public CommandGetPriorities(Map<String, Object> commandData) {
-      this.user_id = (String)commandData.get("user_id");
+      this.user_id = (Double)commandData.get("user_id");
     }
 
     @Override

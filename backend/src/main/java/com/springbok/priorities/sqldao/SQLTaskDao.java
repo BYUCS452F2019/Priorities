@@ -27,7 +27,7 @@ public class SQLTaskDao implements TaskDaoInterface{
     }
 
     @Override
-    public List<TaskModel> getTasksForUserID(String userID) {
+    public List<TaskModel> getTasksForUserID(Double userID) {
         String sql = "SELECT * FROM task WHERE user_id = " + userID;
         try {
             return SQLDaoManager.getObjects(TaskModel.class, sql);
