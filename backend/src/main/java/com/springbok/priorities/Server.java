@@ -1,13 +1,8 @@
 package com.springbok.priorities;
 
 import com.sun.net.httpserver.HttpServer;
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 
 public class Server {
     private static final int MAX_WAITING_CONNECTIONS = 12;

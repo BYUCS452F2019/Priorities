@@ -46,7 +46,8 @@ public class MongoPriorityDao implements PriorityDaoInterface{
     public Integer create(PriorityModel priority) {
         MongoCollection<Document> coll = MongoDaoManager.getCollection(PRIORITY_COLLECTION);
 
-        Integer priority_id = (int) coll.count(and(eq("user_id", priority.getUser_id().toString())));
+        System.out.println(priority.toString());
+        Integer priority_id = (int) coll.count(eq("user_id", priority.getUser_id().toString()));
 
         Map<String, Object> map = new HashMap<>();
 
