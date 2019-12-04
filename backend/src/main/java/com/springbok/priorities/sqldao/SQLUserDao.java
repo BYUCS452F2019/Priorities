@@ -20,10 +20,10 @@ public class SQLUserDao implements UserDaoInterface {
     }
 
     @Override
-    public Integer getUserID(String user_name, String password) {
+    public Integer getUserID(String username, String password) {
         Integer user_id = null;
         try {
-            String sql = "SELECT user_id FROM user WHERE user_name = " + user_name + " and password = " + password;
+            String sql = "SELECT user_id FROM user WHERE username = " + username + " and password = " + password;
             user_id = SQLDaoManager.getObjectID(sql);
             return user_id;
         } catch (SQLException sqlE) {
