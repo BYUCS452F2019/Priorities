@@ -10,7 +10,9 @@ import static com.mongodb.client.model.Updates.*;
 import com.mongodb.Block;
 import org.bson.Document;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MongoUserDao implements UserDaoInterface {
@@ -38,31 +40,31 @@ public class MongoUserDao implements UserDaoInterface {
 
     @Override
     public Integer getUserID(String user_name, String password) {
-        Integer userId;
+        List<Integer> userId = new ArrayList<>();
 
         MongoCollection<Document> coll = MongoDaoManager.getCollection(USER_COLLECTION);
-        coll.find(and(eq("username", user_name), eq("password", password)).forEach(new Block<Document>() {
+        coll.find(and(eq("username", user_name), eq("password", password))).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
-                userId = (Integer) t.get("user_id");
+                userId.add((Integer) t.get("user_id"));
             }
         });
 
         if(userId == null) {
             throw new Exception("Could not find user with username and password");
         }
-        return userId;
+        return userId.get(0);
     }
 
     @Override
     public UserModel getUser(String user_id) {
-        UserModel user;
+        List<UserModel> user = new ArrayList<>();
 
         MongoCollection<Document> coll = MongoDaoManager.getCollection(USER_COLLECTION);
-        coll.find(and(eq("user_id", user_id)).forEach(new Block<Document>() {
+        coll.find(eq("user_id", user_id)).forEach(new Block<Document>() {
             @Override
             public void apply(Document t) {
-                user = new UserModel(
+                user.add(new UserModel(
                     (Integer) t.get("user_id"),
                     (String)  t.get("username"),
                     (String) t.get("email"),
@@ -73,7 +75,7 @@ public class MongoUserDao implements UserDaoInterface {
         if(user == null) {
             throw new Exception("Unable to find user with that user id");
         }
-        return user;
+        return user.get(0);
     }
 
     @Override
