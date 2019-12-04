@@ -75,6 +75,8 @@ public class SQLDaoManager {
         Class<?> boxed = boxPrimitiveClass(type);// box if primitive(Point 6)
         value = boxed.cast(value);
       }
+      System.out.println(type);
+      System.out.println(value);
       field.set(object, value);
     }
   }
