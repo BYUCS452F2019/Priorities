@@ -44,10 +44,27 @@ public class SQLPriorityDao implements PriorityDaoInterface {
          + " WHERE priority_id = " + priority.priority_id;
                         
         try {
-            return SQLDaoManager.updateObject(sql);
+            return SQLDaoManager.updateObject(sql) && updatePriorityDependencies(priority);
         } catch (Exception exception) {
             exception.printStackTrace();
             return null;
         }
+    }
+
+    private Boolean updatePriorityDependencies(PriorityModel priority) {
+        String sql = "UPDATE task t " + 
+                "SET start_remind_date = " +
+                "FROM_UNIXTIME(UNIX_TIMESTAMP(due_date) - (" +
+                    "SELECT (p.type * p.number * 24 * 60 * 60) as priority_offset " +
+                    "FROM priority p " +
+                    "WHERE p.priority_id = t.priority_id) " +
+                ") WHERE t.priority_id = " + priority.priority_id + ";";
+        try {
+            return SQLDaoManager.updateObject(sql);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return false;
+        }
+        
     }
 }
