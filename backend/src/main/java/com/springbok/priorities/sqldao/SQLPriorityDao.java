@@ -38,11 +38,10 @@ public class SQLPriorityDao implements PriorityDaoInterface {
     @Override
     public Boolean updatePriority(PriorityModel priority) {
       String sql = "UPDATE priority SET"
-         + "user_id" + priority.user_id
-         + "title" + priority.title
-         + "type" + priority.type
-         + "number" + priority.number
-         + "WHERE priority_id = " + priority.priority_id;
+         + " title = '" + priority.title
+         + "' type = " + priority.type
+         + " number = " + priority.number
+         + " WHERE priority_id = " + priority.priority_id;
                         
         try {
             return SQLDaoManager.updateObject(sql);
