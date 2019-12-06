@@ -4,6 +4,7 @@ import com.springbok.priorities.daofactory.TaskDaoInterface;
 import com.springbok.priorities.models.TaskModel;
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,16 @@ public class MongoTaskDao implements TaskDaoInterface{
         });
         
         return taskList;
+    }
+
+    @Override
+    public List<TaskModel> getTasksForUserIDForDate(Double userID, Date date) {
+        return getTasksForUserID(userID);
+    }
+
+    @Override
+    public List<TaskModel> getAllTasksForUserID(Double userID) {
+        return getTasksForUserID(userID);
     }
 
     @Override
