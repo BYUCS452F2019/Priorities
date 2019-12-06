@@ -43,12 +43,12 @@ public class SQLTaskDao implements TaskDaoInterface{
     public Boolean updateTask(TaskModel task) {
         String sql = "UPDATE task SET"
         + " task.priority_id = " + task.priority_id
-        + " task.title = '" + task.title
-        + "' task.description = '" + task.description
-        + "' task.completed = " + task.completed
-        + " task.creation_date = '" + task.creation_date
-        + "' task.due_date = '" + task.due_date
-        + "' task.start_remind_date = '" + task.start_remind_date
+        + ", task.title = '" + task.title
+        + "', task.description = '" + task.description
+        + "', task.completed = " + task.completed
+        + ", task.creation_date = '" + task.creation_date
+        + "', task.due_date = '" + task.due_date
+        + "', task.start_remind_date = '" + task.start_remind_date
         + "' WHERE task_id = " + task.task_id;
                         
         try {
