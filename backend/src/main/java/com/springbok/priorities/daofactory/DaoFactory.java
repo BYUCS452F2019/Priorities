@@ -8,7 +8,7 @@ import com.springbok.priorities.sqldao.SQLTaskDao;
 import com.springbok.priorities.sqldao.SQLUserDao;
 
 public class DaoFactory {
-    public static String DAOTYPE = "noSQL";
+    public static String DAOTYPE = "SQL";
 
     public static PriorityDaoInterface getPriorityDao() {
         if (DAOTYPE.equals("noSQL")) {
