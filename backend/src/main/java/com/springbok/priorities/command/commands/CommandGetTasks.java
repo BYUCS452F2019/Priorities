@@ -13,7 +13,7 @@ public class CommandGetTasks implements CommandInterface {
     public CommandGetTasks(Map<String, Object> commandData) {
       this.user_id = (Double)commandData.get("user_id");
       if (commandData.containsKey("date")) {
-        this.date = new Timestamp (Long.parseLong((String)commandData.get("date")));
+        this.date =  new Timestamp(Long.parseLong((String)commandData.get("date")));
       }
     }
 
