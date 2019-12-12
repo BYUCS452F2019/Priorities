@@ -44,7 +44,9 @@ public class SQLPriorityDao implements PriorityDaoInterface {
          + " WHERE priority_id = " + priority.priority_id;
                         
         try {
-            return SQLDaoManager.updateObject(sql) && updatePriorityDependencies(priority);
+            Boolean first = SQLDaoManager.updateObject(sql);
+            Boolean second = updatePriorityDependencies(priority);
+            return first && second;
         } catch (Exception exception) {
             exception.printStackTrace();
             return null;
