@@ -50,6 +50,7 @@ public class SQLTaskDao implements TaskDaoInterface{
             " AND Month(due_date) = MONTH(from_unixtime(" + timestamp + ")) " + 
             " AND DAY(due_date) = DAY(from_unixtime(" + timestamp + ")))) " +
             " ORDER BY due_date";
+            System.out.println(sql);
         try {
             return SQLDaoManager.getObjects(TaskModel.class, sql);
         } catch (Exception exception) {
