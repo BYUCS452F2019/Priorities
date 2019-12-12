@@ -43,7 +43,7 @@ public class SQLTaskDao implements TaskDaoInterface{
 
     @Override
     public List<TaskModel> getTasksForUserIDForDate(Double userID, Timestamp timestamp) {
-        String sql = "SELECT * FROM task WHERE user_id = " + userID + " AND completed = 0 AND start_remind_date < '" + timestamp + "' AND due_date >= '" + timestamp + "'" + " ORDER BY due_date";
+        String sql = "SELECT * FROM task WHERE user_id = " + userID + " AND completed = 0 AND start_remind_date < '" + timestamp + "' AND due_date > '" + timestamp + "'" + " ORDER BY due_date";
         try {
             return SQLDaoManager.getObjects(TaskModel.class, sql);
         } catch (Exception exception) {
