@@ -47,7 +47,7 @@ public class MongoTaskDao implements TaskDaoInterface{
     }
 
     @Override
-    public List<TaskModel> getTasksForUserIDForDate(Double userID, Date date) {
+    public List<TaskModel> getTasksForUserIDForDate(Double userID, Timestamp timstamp) {
         return getTasksForUserID(userID);
     }
 

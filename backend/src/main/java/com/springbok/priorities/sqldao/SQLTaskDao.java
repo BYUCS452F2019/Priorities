@@ -1,6 +1,7 @@
 package com.springbok.priorities.sqldao;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.springbok.priorities.daofactory.TaskDaoInterface;
@@ -41,8 +42,8 @@ public class SQLTaskDao implements TaskDaoInterface{
     }
 
     @Override
-    public List<TaskModel> getTasksForUserIDForDate(Double userID, Date date) {
-        String sql = "SELECT * FROM task WHERE user_id = " + userID + " AND completed = 0 AND start_remind_date < '" + date.getTime() + "' AND due_date >= '" + date.getTime() + "'"  ;
+    public List<TaskModel> getTasksForUserIDForDate(Double userID, Timestamp timestamp) {
+        String sql = "SELECT * FROM task WHERE user_id = " + userID + " AND completed = 0 AND start_remind_date < '" + timestamp + "' AND due_date >= '" + timestamp + "'"  ;
         try {
             return SQLDaoManager.getObjects(TaskModel.class, sql);
         } catch (Exception exception) {
