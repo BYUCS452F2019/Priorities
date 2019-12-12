@@ -48,7 +48,7 @@ public class SQLTaskDao implements TaskDaoInterface{
             " AND (unix_timestamp(due_date) >= " + timestamp +
             " OR (Year(due_date) = YEAR(from_unixtime(" + timestamp + ")) " + 
             " AND Month(due_date) = MONTH(from_unixtime(" + timestamp + ")) " + 
-            " AND DAY(due_date) = DAY(from_unixtime(" + timestamp + "))) " +
+            " AND DAY(due_date) = DAY(from_unixtime(" + timestamp + ")))) " +
             " ORDER BY due_date";
         try {
             return SQLDaoManager.getObjects(TaskModel.class, sql);
